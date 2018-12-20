@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/storeTitle"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="음식점 이름"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/totalTv"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:text="5.0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#ff9635" />
+
+            <LinearLayout
+                android:id="@+id/writeReviewLayout"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="50dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_edit" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="리뷰 작성"
+                    android:textAlignment="center"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="주소"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="전화번호"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="음식종류"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="영업 시간"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="영업 시작일"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="center_vertical"
+                    android:text="가게소개"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="대표사진"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="fill_vertical"
+                    android:text="메뉴"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="할인정보"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="편의시설"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/addressTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="서울시 종로구 ~" />
+
+                <TextView
+                    android:id="@+id/telTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="02-1234-4567" />
+
+                <TextView
+                    android:id="@+id/menutypeTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="양식" />
+
+                <TextView
+                    android:id="@+id/bTimeTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical"
+                    android:text="매일 11:00 ~ 22:00" />
+
+                <TextView
+                    android:id="@+id/openDateTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="2000/11/11" />
+
+                <TextView
+                    android:id="@+id/introTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="center_vertical"
+                    android:text="안녕하세요 어디어디어디~~~" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="#e2e2e2"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imageBtn"
+                        android:layout_width="100dp"
+                        android:layout_height="145dp"
+                        android:layout_weight="1"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_launcher" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/menuListTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:gravity="center_vertical"
+                    android:text="삼겹살/1000" />
+
+                <TextView
+                    android:id="@+id/discountTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#e2e2e2"
+                    android:gravity="center_vertical"
+                    android:text="할인가능" />
+
+                <TextView
+                    android:id="@+id/serviceTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:text="서비스 가능" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#0f0f0f"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+        </LinearLayout>
+
+        <!-- 리뷰 리스트 3개 뿌릴 공간 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="주요 리뷰"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/reviewRecy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/btnMoreReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="리뷰 더 보기" />
+
+            <TextView
+                android:id="@+id/alertMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="작성된 리뷰가 없습니다."
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#0f0f0f"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이 식당의 블로그 리뷰가 궁금하신 가요?"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnBlogReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="블로그 검색하기" />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

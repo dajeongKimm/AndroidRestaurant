@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <LinearLayout
+        android:id="@+id/showListLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="150">
+
+        <TextView
+            android:id="@+id/showText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[음식점 전체 목록 보기]" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/keywordTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="음식점을 검색하세요."
+                android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/goKeyword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:scaleType="centerCrop"
+                app:srcCompat="@android:drawable/ic_search_category_default" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_weight="0.5">
+
+        <LinearLayout
+            android:id="@+id/goSearchStore"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:clickable="false"
+                android:scaleType="centerInside"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+            <TextView
+                android:id="@+id/defaultStoreTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="맛집 찾기"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ckStoreTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="맛집 찾기"
+                android:textAlignment="center"
+                android:textColor="#ffa830"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/goCategory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:clickable="false"
+                android:scaleType="centerInside"
+                app:srcCompat="@android:drawable/ic_dialog_dialer" />
+
+            <TextView
+                android:id="@+id/defaultCategoryTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="카테고리"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ckCategoryTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="카테고리"
+                android:textAlignment="center"
+                android:textColor="#ffa830"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/goReview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
+
+            <TextView
+                android:id="@+id/defaultReviewTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="리뷰"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ckReviewTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="리뷰"
+                android:textAlignment="center"
+                android:textColor="#ffa830"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/goMypage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:clickable="false"
+                app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+            <TextView
+                android:id="@+id/dafaultMyTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="내정보"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ckMyTv"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="내정보"
+                android:textAlignment="center"
+                android:textColor="#ffa830"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
