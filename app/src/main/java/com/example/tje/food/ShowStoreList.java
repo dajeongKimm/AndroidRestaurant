@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.example.tje.food.Model.RestaurantListView;
 import com.google.gson.Gson;
@@ -24,7 +23,7 @@ import java.util.List;
 public class ShowStoreList extends AppCompatActivity {
 
     private static final String LOG_TAG = "comexamplefoodtag";
-    private static final String SHOW_LIST_STORE_URL =  "http://192.168.0.5:8080/Final/m/show/restaurant";
+    private static final String SHOW_LIST_STORE_URL =  "http://192.168.0.18:8080/Final/m/show/restaurant";
 
     //사용할 데이터 담기
     List<RestaurantListView> dataList;

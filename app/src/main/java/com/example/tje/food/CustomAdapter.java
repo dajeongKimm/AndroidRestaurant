@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tje.food.Model.RestaurantListView;
+import com.example.tje.food.R;
+import com.example.tje.food.StoreListHoler;
+//import com.example.tje.food.StoreListHoler;
 
 import java.util.List;
 
@@ -31,6 +34,8 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
     @Override
     public void onBindViewHolder(StoreListHoler storeListHoler, int i) {
         RestaurantListView list = data.get(i);
+
+
 
         storeListHoler.rIdxTv.setText(list.getRestaurant_id()+"");
         //이미지 우선 생략

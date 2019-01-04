@@ -25,7 +25,7 @@ import java.util.List;
 public class KeywordActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "searchkeyword";
-    private static final String SHOW_SEARCH_URL = "http://192.168.0.5:8080/Final/m/show/search";
+    private static final String SHOW_SEARCH_URL = "http://192.168.0.18:8080/Final/m/show/search";
 
     Intent receiveIntent;
     List<RestaurantListView> keywordlist;

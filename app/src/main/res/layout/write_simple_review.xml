@@ -29,8 +29,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="55dp"
             android:layout_gravity="center"
+            android:layout_marginRight="55dp"
             android:text="맛" />
 
         <RatingBar
@@ -114,8 +114,14 @@
         android:layout_width="match_parent"
         android:layout_height="216dp"
         android:ems="10"
-        android:hint="리뷰를 작성 해 주세요."
         android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btn_review_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="사진첨부" />
 
     <Button
         android:id="@+id/btn_write_review"

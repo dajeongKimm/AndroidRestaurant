@@ -17,27 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.example.tje.food.Fragment.CategoryFragment;
-import com.example.tje.food.Fragment.MypageFragment;
-import com.example.tje.food.Fragment.ReviewFragment;
-import com.example.tje.food.Fragment.SearchStoreFragment;
-
-
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout showListLayout;
+    LinearLayout showStoreList;
     TextView showText;
 
-    LinearLayout goSearchStore, goCategory, goReview, goMypage;
+    LinearLayout goReview, goMypage;
     TextView defaultStoreTv, ckStoreTv, defaultCategoryTv, ckCategoryTv, defaultReviewTv, ckReviewTv, dafaultMyTv, ckMyTv;
 
     EditText keywordTv;
     ImageButton goKeyword;
-
-    Fragment categoryFragment, mypageFragment, reviewFragment, searchStoreFragment;
-
-    FragmentManager fm;
-    FragmentTransaction tran;
 
 
     @Override
@@ -57,18 +46,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void init(){
-        showListLayout = (LinearLayout)findViewById(R.id.showListLayout);
-        showText = (TextView)findViewById(R.id.showText);
-
-        goSearchStore = (LinearLayout)findViewById(R.id.goSearchStore);
-        goCategory = (LinearLayout)findViewById(R.id.goCategory);
+        showStoreList = (LinearLayout)findViewById(R.id.showStoreList);
         goReview = (LinearLayout)findViewById(R.id.goReview);
         goMypage = (LinearLayout)findViewById(R.id.goMypage);
 
-        defaultStoreTv = (TextView)findViewById(R.id.defaultStoreTv);
-        ckStoreTv = (TextView)findViewById(R.id.ckStoreTv);
-        defaultCategoryTv = (TextView)findViewById(R.id.defaultCategoryTv);
-        ckCategoryTv = (TextView)findViewById(R.id.ckCategoryTv);
         defaultReviewTv = (TextView)findViewById(R.id.defaultReviewTv);
         ckReviewTv = (TextView)findViewById(R.id.ckReviewTv);
         dafaultMyTv = (TextView)findViewById(R.id.dafaultMyTv);
@@ -77,19 +58,13 @@ public class MainActivity extends AppCompatActivity {
         keywordTv = (EditText)findViewById(R.id.keywordTv);
         goKeyword = (ImageButton)findViewById(R.id.goKeyword);
 
-        //프래그 먼트 객체 생성
-        categoryFragment = new CategoryFragment();
-        mypageFragment = new MypageFragment();
-        reviewFragment = new ReviewFragment();
-        searchStoreFragment = new SearchStoreFragment();
-        //프래그 먼트 교체 기본값
-        //setFrag(0);
 
     }
 
     public void setEvents(){
 
-        showText.setOnClickListener(new View.OnClickListener() {
+        //음식점 전체 보기
+        showStoreList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //화면 전환
@@ -97,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         //검색하기
         goKeyword.setOnClickListener(new View.OnClickListener() {
@@ -110,43 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        goSearchStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //클릭된것만 보이고
-                defaultStoreTv.setVisibility(View.GONE);
-                ckStoreTv.setVisibility(View.VISIBLE);
-                //나머지는 원래대로!
-                defaultCategoryTv.setVisibility(View.VISIBLE);
-                ckCategoryTv.setVisibility(View.GONE);
-                defaultReviewTv.setVisibility(View.VISIBLE);
-                ckReviewTv.setVisibility(View.GONE);
-                dafaultMyTv.setVisibility(View.VISIBLE);
-                ckMyTv.setVisibility(View.GONE);
-
-                //setFrag(0);
-
-            }
-        });
-
-        goCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //클릭된것만 보이고
-                defaultCategoryTv.setVisibility(View.GONE);
-                ckCategoryTv.setVisibility(View.VISIBLE);
-                //나머지는 원래대로!
-                defaultStoreTv.setVisibility(View.VISIBLE);
-                ckStoreTv.setVisibility(View.GONE);
-                defaultReviewTv.setVisibility(View.VISIBLE);
-                ckReviewTv.setVisibility(View.GONE);
-                dafaultMyTv.setVisibility(View.VISIBLE);
-                ckMyTv.setVisibility(View.GONE);
-
-                //setFrag(1);
-
-            }
-        });
 
         goReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,15 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 defaultReviewTv.setVisibility(View.GONE);
                 ckReviewTv.setVisibility(View.VISIBLE);
                 //나머지는 원래대로!
-                defaultCategoryTv.setVisibility(View.VISIBLE);
-                ckCategoryTv.setVisibility(View.GONE);
-                defaultStoreTv.setVisibility(View.VISIBLE);
-                ckStoreTv.setVisibility(View.GONE);
                 dafaultMyTv.setVisibility(View.VISIBLE);
                 ckMyTv.setVisibility(View.GONE);
-
-                //setFrag(2);
-
             }
         });
 
@@ -174,41 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 dafaultMyTv.setVisibility(View.GONE);
                 ckMyTv.setVisibility(View.VISIBLE);
                 //나머지는 원래대로!
-                defaultCategoryTv.setVisibility(View.VISIBLE);
-                ckCategoryTv.setVisibility(View.GONE);
                 defaultReviewTv.setVisibility(View.VISIBLE);
                 ckReviewTv.setVisibility(View.GONE);
-                defaultStoreTv.setVisibility(View.VISIBLE);
-                ckStoreTv.setVisibility(View.GONE);
-
-                //setFrag(3);
-
             }
         });
-    }
-
-    //프래그 먼트 교체하는 메소드
-    public void setFrag(int n){
-        fm = getSupportFragmentManager();
-        tran = fm.beginTransaction();
-
-        switch (n){
-            case 0:
-                tran.add(R.id.showListLayout, searchStoreFragment);
-                tran.commit();
-                break;
-            case 1 :
-                tran.replace(R.id.showListLayout, categoryFragment);
-                tran.commit();
-                break;
-            case 2 :
-                tran.replace(R.id.showListLayout, reviewFragment);
-                tran.commit();
-                break;
-            case 3:
-                tran.replace(R.id.showListLayout, mypageFragment);
-                tran.commit();
-                break;
-        }
     }
 }

@@ -1,10 +1,16 @@
 package com.example.tje.food;
 
+
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -16,20 +22,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.tje.food.R;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class WriteReviewActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = "restaurant";
-    private static final String URL = "http://192.168.0.5:8080/Final/m";
+    private static final String LOG_TAG = "writereview";
+    private static final String URL = "http://192.168.0.18:8080/Final/m";
 
     RatingBar score_flavor, score_volume, score_service, total_score;
-    Button btn_write_review;
+    Button btn_write_review, btn_review_image;
     EditText contents_text;
     TextView restaurant_name;
 
+    private String img_path = new String();
+    private String img_name = null;
     int restaurant_id;
 
     public void initRefs() {
@@ -39,6 +50,7 @@ public class WriteReviewActivity extends AppCompatActivity {
         total_score = (RatingBar) findViewById(R.id.total_score);
 
         btn_write_review = (Button) findViewById(R.id.btn_write_review);
+        btn_review_image = (Button) findViewById(R.id.btn_review_image);
 
         contents_text = (EditText) findViewById(R.id.contents_text);
 
@@ -73,7 +85,7 @@ public class WriteReviewActivity extends AppCompatActivity {
 
 
                             String requestParam = String.format("score_flavor=%d&score_volume=%d&score_service=%d&total_score=%d&simple_review_contents_text=%s",
-                                                                    flavor, volume, service, total, contents);
+                                    flavor, volume, service, total, contents);
                             myConnection.getOutputStream().write(requestParam.getBytes());
                             Log.d(LOG_TAG, myConnection.getResponseCode() + "");
 
@@ -89,6 +101,14 @@ public class WriteReviewActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_review_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
 
@@ -113,5 +133,7 @@ public class WriteReviewActivity extends AppCompatActivity {
         restaurant_id = intent.getIntExtra("restaurant_id", 1);
         restaurant_name.setText(intent.getStringExtra("restaurant_name"));
     }
+
+
 
 }

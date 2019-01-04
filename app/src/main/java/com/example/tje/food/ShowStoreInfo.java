@@ -35,10 +35,10 @@ import java.util.Map;
 public class ShowStoreInfo extends AppCompatActivity {
 
     private static final String LOG_TAG = "comexamplefoodtag";
-    private static final String SHOW_INFO_STORE_URL = "http://192.168.0.5:8080/Final/m/show/restaurant/info";
+    private static final String SHOW_INFO_STORE_URL = "http://192.168.0.18:8080/Final/m/show/restaurant/info";
 
 
-    TextView storeTitle, totalTv, addressTv, telTv, menutypeTv, bTimeTv, openDateTv, introTv, menuListTv, discountTv, serviceTv, alertMsg;
+    TextView storeTitle, totalTv, addressTv, telTv, menutypeTv, bTimeTv, openDateTv, introTv, menuListTv, discountTv, serviceTv, alertMsg, reviewCntTv;
     Intent receiveIntent;
     RecyclerView reviewRecy;
     ArrayList<ReviewListView> reviewlist;
@@ -73,6 +73,7 @@ public class ShowStoreInfo extends AppCompatActivity {
         btnMoreReview = (Button)findViewById(R.id.btnMoreReview);
         btnBlogReview = (Button)findViewById(R.id.btnBlogReview);
         alertMsg = (TextView)findViewById(R.id.alertMsg);
+        reviewCntTv = (TextView)findViewById(R.id.reviewCntTv);
 
         writeReviewLayout = (LinearLayout)findViewById(R.id.writeReviewLayout);
 
@@ -161,6 +162,15 @@ public class ShowStoreInfo extends AppCompatActivity {
                         Type typeReview = new TypeToken<ArrayList<ReviewListView>>(){}.getType();
                         reviewlist = gson.fromJson(jsonObject.get("dataReview"), typeReview);
 
+                        //리뷰개수 가져오기
+                        Type typeReviewCount = new TypeToken<Integer>(){}.getType();
+                        int reviewCount = gson.fromJson(jsonObject.get("dataReviewCount"), typeReviewCount);
+                        reviewCntTv.setText("주요 리뷰(" + reviewCount + ")");
+                        //리뷰가 보이지 않으면, 버튼 감추기
+                        if(reviewCount == 0){
+                            btnMoreReview.setVisibility(View.GONE);
+                        }
+
 
                         //data 세팅
                         storeTitle.setText(storeInfo.getRestaurant_name());
@@ -217,10 +227,6 @@ public class ShowStoreInfo extends AppCompatActivity {
                         }
 
                         menuListTv.setText(data.toString());
-
-
-                        //리뷰뿌리기 reviewlist -> 여기에 담겨 있음.
-
 
                     }else{//그외에 400번 500번 에러가 있는 경우
                         Log.d(LOG_TAG, "서버 연결 및 메세지 읽기 실패1\n");
