@@ -35,10 +35,10 @@ import java.util.Map;
 public class ShowStoreInfo extends AppCompatActivity {
 
     private static final String LOG_TAG = "comexamplefoodtag";
-    private static final String SHOW_INFO_STORE_URL = "http://192.168.0.18:8080/Final/m/show/restaurant/info";
+    private static final String SHOW_INFO_STORE_URL = "http://192.168.0.3:8080/Final/m/show/restaurant/info";
 
 
-    TextView storeTitle, totalTv, addressTv, telTv, menutypeTv, bTimeTv, openDateTv, introTv, menuListTv, discountTv, serviceTv, alertMsg, reviewCntTv;
+    TextView storeTitle, totalTv, addressTv, telTv, menutypeTv, bTimeTv, openDateTv, introTv, menuListTv, discountTv, serviceTv, alertMsg;
     Intent receiveIntent;
     RecyclerView reviewRecy;
     ArrayList<ReviewListView> reviewlist;
@@ -73,7 +73,8 @@ public class ShowStoreInfo extends AppCompatActivity {
         btnMoreReview = (Button)findViewById(R.id.btnMoreReview);
         btnBlogReview = (Button)findViewById(R.id.btnBlogReview);
         alertMsg = (TextView)findViewById(R.id.alertMsg);
-        reviewCntTv = (TextView)findViewById(R.id.reviewCntTv);
+
+        //
 
         writeReviewLayout = (LinearLayout)findViewById(R.id.writeReviewLayout);
 
@@ -147,7 +148,7 @@ public class ShowStoreInfo extends AppCompatActivity {
 
 
                         //Date 타입 잘 가져오기 위함
-                        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+                        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm").create();
                         //Map을 객체로 받아오려면 JsonObject 클래스를 써야됨. ->Gson 라이브러리에 기본으로 있는 것.
                         JsonObject jsonObject = gson.fromJson(buffer.toString(), JsonObject.class);
 
@@ -165,12 +166,11 @@ public class ShowStoreInfo extends AppCompatActivity {
                         //리뷰개수 가져오기
                         Type typeReviewCount = new TypeToken<Integer>(){}.getType();
                         int reviewCount = gson.fromJson(jsonObject.get("dataReviewCount"), typeReviewCount);
-                        reviewCntTv.setText("주요 리뷰(" + reviewCount + ")");
+
                         //리뷰가 보이지 않으면, 버튼 감추기
                         if(reviewCount == 0){
                             btnMoreReview.setVisibility(View.GONE);
                         }
-
 
                         //data 세팅
                         storeTitle.setText(storeInfo.getRestaurant_name());

@@ -40,6 +40,7 @@
                 android:paddingLeft="10dp"
                 android:text="닉네임" />
 
+
             <TextView
                 android:id="@+id/reviewId"
                 android:layout_width="match_parent"
@@ -50,20 +51,38 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="40dp"
-                    android:layout_height="20dp"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/like" />
+                <ToggleButton
+                    android:id="@+id/like_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/drawable_like"
+                    android:textOff=""
+                    android:textOn="" />
 
                 <TextView
                     android:id="@+id/likeCountTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="150"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textSize="12sp" />
+
+                <ToggleButton
+                    android:id="@+id/bad_btn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/drawable_bad"
+                    android:textOff=""
+                    android:textOn="" />
+
+                <TextView
+                    android:id="@+id/badCountTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -75,7 +94,6 @@
                     android:id="@+id/writeDateTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="2018/12/19 13:15"
                     android:textAlignment="viewEnd"
                     android:textSize="12sp" />

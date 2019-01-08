@@ -1,5 +1,6 @@
 package com.example.tje.food;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -22,13 +25,15 @@ import java.net.URL;
 public class SimpleReviewHolder extends RecyclerView.ViewHolder {
 
     private static final String LOG_TAG = "reviewholder";
-    private static final String URL_MAPPING = "http://192.168.0.18:8080/Final/m";
+    private static final String URL_MAPPING = "http://192.168.0.3:8080/Final/m";
 
     // 리스트 아이템에 있는 사용할 위젯 정의
     ImageButton member_photo_btn;
     TextView nicknameTv, like_count, bad_count, review_registdate, contents_text, review_id;
     ToggleButton like_btn, bad_btn;
     RatingBar total_score_rating;
+    LinearLayout review_layout;
+    ImageView list_image;
 
     final Handler likeHandler = new Handler() {
         @Override
@@ -44,10 +49,11 @@ public class SimpleReviewHolder extends RecyclerView.ViewHolder {
     };
 
     // 생성자 생성
-    public SimpleReviewHolder(@NonNull View itemView) {
+    public SimpleReviewHolder(@NonNull final View itemView) {
         super(itemView);
 
         //
+        list_image = (ImageView) itemView.findViewById(R.id.list_image);
         member_photo_btn = (ImageButton) itemView.findViewById(R.id.member_photo_btn);
 
         nicknameTv = (TextView) itemView.findViewById(R.id.nicknameTv);
@@ -61,6 +67,18 @@ public class SimpleReviewHolder extends RecyclerView.ViewHolder {
         bad_btn = (ToggleButton) itemView.findViewById(R.id.bad_btn);
 
         total_score_rating = (RatingBar) itemView.findViewById(R.id.total_score_rating);
+
+        review_layout = (LinearLayout) itemView.findViewById(R.id.review_layout);
+
+        review_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(itemView.getContext(), SimpleReviewDetailActivity.class);
+                intent.putExtra("simple_review_id", review_id.getText().toString());
+                Log.d(LOG_TAG, "intent 전");
+                itemView.getContext().startActivity(intent);
+            }
+        });
 
         // like
         like_btn.setOnClickListener(new View.OnClickListener() {

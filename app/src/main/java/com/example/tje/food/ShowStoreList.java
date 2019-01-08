@@ -23,7 +23,7 @@ import java.util.List;
 public class ShowStoreList extends AppCompatActivity {
 
     private static final String LOG_TAG = "comexamplefoodtag";
-    private static final String SHOW_LIST_STORE_URL =  "http://192.168.0.18:8080/Final/m/show/restaurant";
+    private static final String SHOW_LIST_STORE_URL =  "http://192.168.0.3:8080/Final/m/show/restaurant";
 
     //사용할 데이터 담기
     List<RestaurantListView> dataList;
