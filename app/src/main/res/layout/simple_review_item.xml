@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/review_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     android:background="#e2e2e2"
-    android:padding="5dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
 
     <LinearLayout
@@ -21,8 +22,8 @@
 
             <ImageButton
                 android:id="@+id/member_photo_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
                 app:srcCompat="@mipmap/ic_launcher_round" />
@@ -40,8 +41,8 @@
                 android:id="@+id/nicknameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:paddingLeft="10dp"
                 android:gravity="center_vertical"
+                android:paddingLeft="10dp"
                 android:text="닉네임" />
 
             <TextView
@@ -116,6 +117,14 @@
             android:ellipsize="end"
             android:maxLines="5"
             android:text="내용" />
+
+        <ImageView
+            android:id="@+id/list_image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:src="@drawable/bunsik"/>
     </LinearLayout>
 
     <LinearLayout
@@ -138,9 +147,9 @@
             android:id="@+id/total_score_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:progressTint="#ffe630"
             android:layout_weight="1"
-            android:numStars="5" />
+            android:numStars="5"
+            android:progressTint="#ffe630" />
     </LinearLayout>
 
 
