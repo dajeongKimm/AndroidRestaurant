@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     EditText keywordTv;
     ImageButton goKeyword;
 
+    int a;
+
     public static final int PER_GARRERY = 98;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             String permissions[] = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE};
             requestPermissions(permissions, PER_GARRERY); //(String[] , int)
         }
+
+
 
     }
 
