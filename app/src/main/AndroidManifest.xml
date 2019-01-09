@@ -29,6 +29,8 @@
         <activity android:name=".DaumPostCodeActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".MyPageUpdateActivity"></activity>
+        <activity android:name=".KeywordActivity"></activity>
+        <activity android:name=".SimpleReviewDetailActivity"></activity>
     </application>
 
 </manifest>

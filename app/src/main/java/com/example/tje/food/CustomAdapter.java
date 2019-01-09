@@ -1,16 +1,26 @@
 package com.example.tje.food;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tje.food.Model.RestaurantListView;
+import com.example.tje.food.R;
+import com.example.tje.food.StoreListHoler;
+//import com.example.tje.food.StoreListHoler;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
 
+    private static final String URL = "http://192.168.0.18:8080/Final/resources/";
 
     //1. 사용할 데이터 정의
     List<RestaurantListView> data;
@@ -29,8 +39,10 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
 
     //4. 데이터를 화면에 세팅
     @Override
-    public void onBindViewHolder(StoreListHoler storeListHoler, int i) {
-        RestaurantListView list = data.get(i);
+    public void onBindViewHolder(final StoreListHoler storeListHoler, int i) {
+        final RestaurantListView list = data.get(i);
+
+
 
         storeListHoler.rIdxTv.setText(list.getRestaurant_id()+"");
         //이미지 우선 생략
@@ -45,6 +57,33 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
             storeListHoler.totalTv.setText(total);
         }
         storeListHoler.readCntTv.setText(list.getRead_count() + "");
+
+        new AsyncTask<String, Integer, Bitmap>() {
+
+            Bitmap bitmap;
+
+            @Override
+            protected Bitmap doInBackground(String... strings) {
+                try {
+                    URL url = new URL(URL + list.getRestaurant_mainimage());
+                    Log.d("--------", url + "");//
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.connect();
+
+                    bitmap = BitmapFactory.decodeStream(conn.getInputStream());
+
+                } catch (Exception e) {
+                    Log.d("--------", e.getMessage());//
+                }
+
+                return bitmap;
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                storeListHoler.storeimageBtn.setImageBitmap(bitmap);
+            }
+        }.execute();
 
     }
 

@@ -3,6 +3,9 @@ package com.example.tje.food;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,25 +25,24 @@ import com.example.tje.food.Fragment.MypageFragment;
 import com.example.tje.food.Fragment.ReviewFragment;
 import com.example.tje.food.Fragment.SearchStoreFragment;
 import com.example.tje.food.Model.Member;
-import com.example.tje.food.Model.Member_address;
+
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout showListLayout;
+    LinearLayout showStoreList;
     TextView showText;
 
-    LinearLayout goSearchStore, goCategory, goReview, goMypage;
+    LinearLayout goReview, goMypage;
     TextView defaultStoreTv, ckStoreTv, defaultCategoryTv, ckCategoryTv, defaultReviewTv, ckReviewTv, dafaultMyTv, ckMyTv;
 
     EditText keywordTv;
     ImageButton goKeyword,btn_mypage_form;
 
 
-    Fragment categoryFragment, mypageFragment, reviewFragment, searchStoreFragment;
 
-    FragmentManager fm;
-    FragmentTransaction tran;
+    public static final int PER_GARRERY = 98;
 
 
     // 서버에서 받아올 객체
@@ -48,35 +50,58 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         int permission_internet = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET);
 
         if(permission_internet == PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 112);
         }
 
-        init();
-        setEvents();
+        int permission_gallery = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if(permission_gallery == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 123);
+        }
+        */
+
+
+        if(checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED &&
+                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+            init();
+            setEvents();
+        }else{ //2.2 권한이 없으면 - 사용자에게 권한요청
+            String permissions[] = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            requestPermissions(permissions, PER_GARRERY); //(String[] , int)
+        }
+
+
 
     }
 
-    public void init(){
-        showListLayout = (LinearLayout)findViewById(R.id.showListLayout);
-        showText = (TextView)findViewById(R.id.showText);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch(requestCode) {
+            case PER_GARRERY :
+                if (grantResults[0] == PackageManager.PERMISSION_DENIED || grantResults[1] == PackageManager.PERMISSION_DENIED) {
+                    Toast.makeText(getApplicationContext(), "권한 요청을 승인하셔야 앱을 사용할 수 있습니다.", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    init();
+                    setEvents();
+                }
+        }
+    }
 
-        goSearchStore = (LinearLayout)findViewById(R.id.goSearchStore);
-        goCategory = (LinearLayout)findViewById(R.id.goCategory);
+    public void init(){
+        showStoreList = (LinearLayout)findViewById(R.id.showStoreList);
         goReview = (LinearLayout)findViewById(R.id.goReview);
         goMypage = (LinearLayout)findViewById(R.id.goMypage);
 
-        defaultStoreTv = (TextView)findViewById(R.id.defaultStoreTv);
-        ckStoreTv = (TextView)findViewById(R.id.ckStoreTv);
-        defaultCategoryTv = (TextView)findViewById(R.id.defaultCategoryTv);
-        ckCategoryTv = (TextView)findViewById(R.id.ckCategoryTv);
         defaultReviewTv = (TextView)findViewById(R.id.defaultReviewTv);
         ckReviewTv = (TextView)findViewById(R.id.ckReviewTv);
         dafaultMyTv = (TextView)findViewById(R.id.dafaultMyTv);
@@ -86,20 +111,16 @@ public class MainActivity extends AppCompatActivity {
         goKeyword = (ImageButton)findViewById(R.id.goKeyword);
         btn_mypage_form = (ImageButton)findViewById(R.id.btn_mypage_form);
 
-        //프래그 먼트 객체 생성
-        categoryFragment = new CategoryFragment();
-        mypageFragment = new MypageFragment();
-        reviewFragment = new ReviewFragment();
-        searchStoreFragment = new SearchStoreFragment();
-        //프래그 먼트 교체 기본값
-        //setFrag(0);
+
+
         loginmember = null;
 
     }
 
     public void setEvents(){
 
-        showText.setOnClickListener(new View.OnClickListener() {
+        //음식점 전체 보기
+        showStoreList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //화면 전환
@@ -120,43 +141,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        goSearchStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //클릭된것만 보이고
-                defaultStoreTv.setVisibility(View.GONE);
-                ckStoreTv.setVisibility(View.VISIBLE);
-                //나머지는 원래대로!
-                defaultCategoryTv.setVisibility(View.VISIBLE);
-                ckCategoryTv.setVisibility(View.GONE);
-                defaultReviewTv.setVisibility(View.VISIBLE);
-                ckReviewTv.setVisibility(View.GONE);
-                dafaultMyTv.setVisibility(View.VISIBLE);
-                ckMyTv.setVisibility(View.GONE);
-
-                //setFrag(0);
-
-            }
-        });
-
-        goCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //클릭된것만 보이고
-                defaultCategoryTv.setVisibility(View.GONE);
-                ckCategoryTv.setVisibility(View.VISIBLE);
-                //나머지는 원래대로!
-                defaultStoreTv.setVisibility(View.VISIBLE);
-                ckStoreTv.setVisibility(View.GONE);
-                defaultReviewTv.setVisibility(View.VISIBLE);
-                ckReviewTv.setVisibility(View.GONE);
-                dafaultMyTv.setVisibility(View.VISIBLE);
-                ckMyTv.setVisibility(View.GONE);
-
-                //setFrag(1);
-
-            }
-        });
 
         goReview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,15 +149,8 @@ public class MainActivity extends AppCompatActivity {
                 defaultReviewTv.setVisibility(View.GONE);
                 ckReviewTv.setVisibility(View.VISIBLE);
                 //나머지는 원래대로!
-                defaultCategoryTv.setVisibility(View.VISIBLE);
-                ckCategoryTv.setVisibility(View.GONE);
-                defaultStoreTv.setVisibility(View.VISIBLE);
-                ckStoreTv.setVisibility(View.GONE);
                 dafaultMyTv.setVisibility(View.VISIBLE);
                 ckMyTv.setVisibility(View.GONE);
-
-                //setFrag(2);
-
             }
         });
 
@@ -184,14 +161,10 @@ public class MainActivity extends AppCompatActivity {
                 dafaultMyTv.setVisibility(View.GONE);
                 ckMyTv.setVisibility(View.VISIBLE);
                 //나머지는 원래대로!
-                defaultCategoryTv.setVisibility(View.VISIBLE);
-                ckCategoryTv.setVisibility(View.GONE);
                 defaultReviewTv.setVisibility(View.VISIBLE);
                 ckReviewTv.setVisibility(View.GONE);
-                defaultStoreTv.setVisibility(View.VISIBLE);
-                ckStoreTv.setVisibility(View.GONE);
 
-                //setFrag(3);
+
 
             }
         });
@@ -223,30 +196,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    //프래그 먼트 교체하는 메소드
-    public void setFrag(int n){
-        fm = getSupportFragmentManager();
-        tran = fm.beginTransaction();
-
-        switch (n){
-            case 0:
-                tran.add(R.id.showListLayout, searchStoreFragment);
-                tran.commit();
-                break;
-            case 1 :
-                tran.replace(R.id.showListLayout, categoryFragment);
-                tran.commit();
-                break;
-            case 2 :
-                tran.replace(R.id.showListLayout, reviewFragment);
-                tran.commit();
-                break;
-            case 3:
-                tran.replace(R.id.showListLayout, mypageFragment);
-                tran.commit();
-                break;
-        }
     }
 }

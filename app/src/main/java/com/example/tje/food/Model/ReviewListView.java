@@ -18,7 +18,7 @@ public class ReviewListView {
     private int score_flavor;
     private int score_volume;
     private int score_service;
-    private double total_score;
+    private int total_score;
     private Date simple_review_registdate;
 
 
@@ -126,11 +126,11 @@ public class ReviewListView {
         this.score_service = score_service;
     }
 
-    public double getTotal_score() {
+    public int getTotal_score() {
         return total_score;
     }
 
-    public void setTotal_score(double total_score) {
+    public void setTotal_score(int total_score) {
         this.total_score = total_score;
     }
 

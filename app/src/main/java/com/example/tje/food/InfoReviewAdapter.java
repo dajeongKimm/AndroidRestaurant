@@ -3,6 +3,7 @@ package com.example.tje.food;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,8 @@ public class InfoReviewAdapter extends RecyclerView.Adapter<InfoReviewListHoler>
 
         infoReviewListHoler.nicknameTv.setText(list.getMember_nickname());
         infoReviewListHoler.likeCountTv.setText(list.getSimple_review_like_count() + "");
+        Log.d("=========", list.getSimple_review_notify_count() + "");
+        infoReviewListHoler.badCountTv.setText(list.getSimple_review_notify_count() + "");
         infoReviewListHoler.writeDateTv.setText(list.getSimple_review_registdate() + "");
         infoReviewListHoler.contentsTv.setText(list.getSimple_review_contents_text());
         infoReviewListHoler.ratingBar.setRating((float)list.getTotal_score());
