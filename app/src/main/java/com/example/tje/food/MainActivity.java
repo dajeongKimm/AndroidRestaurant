@@ -21,6 +21,8 @@ import com.example.tje.food.Fragment.CategoryFragment;
 import com.example.tje.food.Fragment.MypageFragment;
 import com.example.tje.food.Fragment.ReviewFragment;
 import com.example.tje.food.Fragment.SearchStoreFragment;
+import com.example.tje.food.Model.Member;
+import com.example.tje.food.Model.Member_address;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,12 +34,18 @@ public class MainActivity extends AppCompatActivity {
     TextView defaultStoreTv, ckStoreTv, defaultCategoryTv, ckCategoryTv, defaultReviewTv, ckReviewTv, dafaultMyTv, ckMyTv;
 
     EditText keywordTv;
-    ImageButton goKeyword;
+    ImageButton goKeyword,btn_mypage_form;
+
 
     Fragment categoryFragment, mypageFragment, reviewFragment, searchStoreFragment;
 
     FragmentManager fm;
     FragmentTransaction tran;
+
+
+    // 서버에서 받아올 객체
+    Member loginmember;
+
 
 
     @Override
@@ -76,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
         keywordTv = (EditText)findViewById(R.id.keywordTv);
         goKeyword = (ImageButton)findViewById(R.id.goKeyword);
+        btn_mypage_form = (ImageButton)findViewById(R.id.btn_mypage_form);
 
         //프래그 먼트 객체 생성
         categoryFragment = new CategoryFragment();
@@ -84,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         searchStoreFragment = new SearchStoreFragment();
         //프래그 먼트 교체 기본값
         //setFrag(0);
+        loginmember = null;
 
     }
 
@@ -182,6 +192,34 @@ public class MainActivity extends AppCompatActivity {
                 ckStoreTv.setVisibility(View.GONE);
 
                 //setFrag(3);
+
+            }
+        });
+
+        btn_mypage_form.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent inetent = getIntent();
+                loginmember =(Member) inetent.getSerializableExtra("loginmember");
+
+                if(loginmember == null){
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }else{
+
+                    Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
+                    intent.putExtra("loginmember",loginmember);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
+
 
             }
         });

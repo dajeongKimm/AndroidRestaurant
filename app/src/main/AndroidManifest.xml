@@ -23,7 +23,12 @@
         <activity android:name=".ShowMoreReviewListActivity" />
         <activity android:name=".WriteReviewActivity" />
         <activity android:name=".WebViewActivity" />
-        <activity android:name=".KeywordActivity"></activity>
+        <activity android:name=".KeywordActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".DaumPostCodeActivity" />
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".MyPageUpdateActivity"></activity>
     </application>
 
 </manifest>

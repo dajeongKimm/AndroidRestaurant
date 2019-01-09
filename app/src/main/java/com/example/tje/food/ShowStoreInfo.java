@@ -35,7 +35,7 @@ import java.util.Map;
 public class ShowStoreInfo extends AppCompatActivity {
 
     private static final String LOG_TAG = "comexamplefoodtag";
-    private static final String SHOW_INFO_STORE_URL = "http://192.168.0.5:8080/Final/m/show/restaurant/info";
+    private static final String SHOW_INFO_STORE_URL = "http://192.168.10.11:8080/Final/m/show/restaurant/info";
 
 
     TextView storeTitle, totalTv, addressTv, telTv, menutypeTv, bTimeTv, openDateTv, introTv, menuListTv, discountTv, serviceTv, alertMsg;

@@ -23,7 +23,7 @@ import java.net.URL;
 public class WriteReviewActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "restaurant";
-    private static final String URL = "http://192.168.0.5:8080/Final/m";
+    private static final String URL = "http://192.168.10.11:8080/Final/m";
 
     RatingBar score_flavor, score_volume, score_service, total_score;
     Button btn_write_review;
