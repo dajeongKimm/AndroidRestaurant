@@ -242,6 +242,15 @@ public class WriteReviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.write_simple_review);
 
+        // 권한 얻기
+        int permission_internet = ContextCompat.checkSelfPermission(
+                getApplicationContext(), Manifest.permission.INTERNET);
+
+        if( permission_internet == PackageManager.PERMISSION_DENIED ) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.INTERNET}, 112);
+        }
+
         initRefs();
         setEvents();
 

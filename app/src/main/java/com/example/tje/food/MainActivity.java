@@ -13,6 +13,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+
+
+import com.example.tje.food.Model.Member;
+
 import android.widget.Toast;
 
 
@@ -25,10 +30,17 @@ public class MainActivity extends AppCompatActivity {
     TextView defaultReviewTv, ckReviewTv, dafaultMyTv, ckMyTv;
 
     EditText keywordTv;
-    ImageButton goKeyword;
+    ImageButton goKeyword,btn_mypage_form;
+
 
 
     public static final int PER_GARRERY = 98;
+
+
+    // 서버에서 받아올 객체
+    Member loginmember;
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -38,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*
         int permission_internet = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.INTERNET);
+
         if(permission_internet == PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 112);
         }
@@ -88,7 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
         keywordTv = (EditText)findViewById(R.id.keywordTv);
         goKeyword = (ImageButton)findViewById(R.id.goKeyword);
+        btn_mypage_form = (ImageButton)findViewById(R.id.btn_mypage_form);
 
+
+
+        loginmember = null;
 
     }
 
@@ -103,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         //검색하기
         goKeyword.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +155,37 @@ public class MainActivity extends AppCompatActivity {
                 //나머지는 원래대로!
                 defaultReviewTv.setVisibility(View.VISIBLE);
                 ckReviewTv.setVisibility(View.GONE);
+
+
+
+            }
+        });
+
+        btn_mypage_form.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent inetent = getIntent();
+                loginmember =(Member) inetent.getSerializableExtra("loginmember");
+
+                if(loginmember == null){
+                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }else{
+
+                    Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
+                    intent.putExtra("loginmember",loginmember);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
+
+
             }
         });
     }

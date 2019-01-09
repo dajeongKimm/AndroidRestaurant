@@ -3,7 +3,6 @@
     package="com.example.tje.food">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,16 +14,21 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowStoreList" >
-
-        </activity>
+        <activity android:name=".ShowStoreList" />
         <activity android:name=".ShowStoreInfo" />
         <activity android:name=".ShowMoreReviewListActivity" />
         <activity android:name=".WriteReviewActivity" />
         <activity android:name=".WebViewActivity" />
+        <activity android:name=".KeywordActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".DaumPostCodeActivity" />
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".MyPageUpdateActivity"></activity>
         <activity android:name=".KeywordActivity"></activity>
         <activity android:name=".SimpleReviewDetailActivity"></activity>
     </application>
