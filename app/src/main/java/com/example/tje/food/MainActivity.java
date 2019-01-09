@@ -117,6 +117,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //화면 전환
                 Intent intent = new Intent(getApplicationContext(), ShowStoreList.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -179,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                     intent.putExtra("loginmember",loginmember);
                     startActivity(intent);
-                   
+
 
                 }
 

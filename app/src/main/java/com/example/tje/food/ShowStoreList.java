@@ -1,5 +1,6 @@
 package com.example.tje.food;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -100,6 +101,8 @@ public class ShowStoreList extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String s) {
+
+
                 //1. 리사이클러뷰 화면 연결
                 recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
                 //2. 아답터 생성
@@ -109,6 +112,8 @@ public class ShowStoreList extends AppCompatActivity {
                 recyclerView.setAdapter(adapter);
                 //4.리사이클러뷰매니저
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+
 
                 Log.d(LOG_TAG, dataList.size() + "");
                 super.onPostExecute(s);

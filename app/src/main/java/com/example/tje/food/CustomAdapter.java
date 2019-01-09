@@ -1,5 +1,6 @@
 package com.example.tje.food;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.tje.food.Model.RestaurantListView;
 import com.example.tje.food.R;
 import com.example.tje.food.StoreListHoler;
+import com.squareup.picasso.Picasso;
 //import com.example.tje.food.StoreListHoler;
 
 import java.net.HttpURLConnection;
@@ -58,6 +60,10 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
         }
         storeListHoler.readCntTv.setText(list.getRead_count() + "");
 
+        //이미지 피카소라이브러리로 가져오기
+        Picasso.get().load(Const.CUSTOMAPATER_IP + list.getRestaurant_mainimage()).into(storeListHoler.storeimageBtn);
+
+        /*
         new AsyncTask<String, Integer, Bitmap>() {
 
             Bitmap bitmap;
@@ -84,6 +90,7 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
                 storeListHoler.storeimageBtn.setImageBitmap(bitmap);
             }
         }.execute();
+        */
 
     }
 

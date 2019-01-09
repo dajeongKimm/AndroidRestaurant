@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -44,6 +47,9 @@ public class ShowStoreInfo extends AppCompatActivity {
     ArrayList<ReviewListView> reviewlist;
     Button btnMoreReview, btnBlogReview;
     LinearLayout writeReviewLayout;
+    ImageView detailStoreImage;
+
+    DetailRestaurantView storeInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +80,7 @@ public class ShowStoreInfo extends AppCompatActivity {
         btnBlogReview = (Button)findViewById(R.id.btnBlogReview);
         alertMsg = (TextView)findViewById(R.id.alertMsg);
 
-        //
+        detailStoreImage = (ImageView)findViewById(R.id.detailStoreImage);
 
         writeReviewLayout = (LinearLayout)findViewById(R.id.writeReviewLayout);
 
@@ -153,7 +159,7 @@ public class ShowStoreInfo extends AppCompatActivity {
                         JsonObject jsonObject = gson.fromJson(buffer.toString(), JsonObject.class);
 
                         //음식점 정보 - 객체 1
-                        DetailRestaurantView storeInfo = gson.fromJson(jsonObject.get("dataStore"), DetailRestaurantView.class);
+                        storeInfo = gson.fromJson(jsonObject.get("dataStore"), DetailRestaurantView.class);
 
                         //음식점 메뉴 - 리스트
                         Type typeMenu = new TypeToken<ArrayList<MenuList>>(){}.getType();
@@ -187,7 +193,6 @@ public class ShowStoreInfo extends AppCompatActivity {
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
                         openDateTv.setText(sdf.format(storeInfo.getRestaurant_opendate()));
                         introTv.setText(storeInfo.getRestaurant_description());
-                        menuListTv.setText("메뉴 가져와야 됨");
 
                         StringBuffer discountSb = new StringBuffer();
                         if(storeInfo.isDiscount_coupon())
@@ -228,6 +233,8 @@ public class ShowStoreInfo extends AppCompatActivity {
 
                         menuListTv.setText(data.toString());
 
+
+
                     }else{//그외에 400번 500번 에러가 있는 경우
                         Log.d(LOG_TAG, "서버 연결 및 메세지 읽기 실패1\n");
                         Log.d(LOG_TAG,myConnection.getResponseCode() + "");
@@ -251,6 +258,10 @@ public class ShowStoreInfo extends AppCompatActivity {
                 reviewRecy.setAdapter(adapter);
                 //4.리사이클러뷰매니저
                 reviewRecy.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+                //이미지 피카소라이브러리로 가져오기
+                Picasso.get().load(Const.CUSTOMAPATER_IP + storeInfo.getRestaurant_mainimage()).into(detailStoreImage);
+
 
                 /*
                 if(reviewlist == null){

@@ -20,6 +20,8 @@ public class Const {
 
     public static final String WRITEREVIEWACTIVITY_IP = "http://192.168.0.16:8080/Final/m";
 
+
+
     //member
     public static final String LOGINACTIVITY_IP = "http://192.168.0.16:8080/Final";
     public static final String DAUMPOSTCODEACTIVITY_IP = "http://192.168.0.16:8080/Final";

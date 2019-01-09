@@ -218,12 +218,12 @@
                     android:background="#e2e2e2"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imageBtn"
+                    <ImageView
+                        android:id="@+id/detailStoreImage"
                         android:layout_width="100dp"
                         android:layout_height="145dp"
                         android:layout_weight="1"
-                        android:scaleType="centerCrop"
+                        android:scaleType="fitXY"
                         android:src="@mipmap/ic_launcher" />
                 </LinearLayout>
 

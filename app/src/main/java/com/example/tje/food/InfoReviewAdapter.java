@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.tje.food.Model.RestaurantListView;
 import com.example.tje.food.Model.ReviewListView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,13 +40,27 @@ public class InfoReviewAdapter extends RecyclerView.Adapter<InfoReviewListHoler>
 
         infoReviewListHoler.nicknameTv.setText(list.getMember_nickname());
         infoReviewListHoler.likeCountTv.setText(list.getSimple_review_like_count() + "");
-        Log.d("=========", list.getSimple_review_notify_count() + "");
         infoReviewListHoler.badCountTv.setText(list.getSimple_review_notify_count() + "");
         infoReviewListHoler.writeDateTv.setText(list.getSimple_review_registdate() + "");
         infoReviewListHoler.contentsTv.setText(list.getSimple_review_contents_text());
         infoReviewListHoler.ratingBar.setRating((float)list.getTotal_score());
         infoReviewListHoler.ratingBar.setIsIndicator(true);
         infoReviewListHoler.reviewId.setText(list.getSimple_review_id()+"");
+
+        //멤버사진 셋팅
+        if (list.getMember_photo() == null){
+            Picasso.get().load(Const.SIMPLEREVIEWADAPTER_M_IP + "default.png").into(infoReviewListHoler.memberImage);
+        }else{
+            Picasso.get().load(Const.SIMPLEREVIEWADAPTER_M_IP + list.getMember_photo()).into(infoReviewListHoler.memberImage);
+        }
+
+        // 주요리뷰 사진 보이기
+        if (list.getFile_name() != null){
+            Picasso.get().load(Const.SIMPLEREVIEWADAPTER_IP + list.getFile_name()).into(infoReviewListHoler.infoImage);
+            infoReviewListHoler.infoImage.setVisibility(View.VISIBLE);
+        }
+
+
 
     }
 

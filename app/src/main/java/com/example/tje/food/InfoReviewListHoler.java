@@ -1,5 +1,6 @@
 package com.example.tje.food;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,9 @@ public class InfoReviewListHoler extends RecyclerView.ViewHolder {
     TextView nicknameTv, likeCountTv, badCountTv, writeDateTv, contentsTv, reviewId;
     ToggleButton like_btn, bad_btn;
     RatingBar ratingBar;
+    ImageView memberImage, infoImage;
+
+    LinearLayout moreReview;
 
     final Handler likeHandler = new Handler() {
         @Override
@@ -58,7 +64,22 @@ public class InfoReviewListHoler extends RecyclerView.ViewHolder {
         like_btn = (ToggleButton)v.findViewById(R.id.like_btn);
         bad_btn = (ToggleButton)v.findViewById(R.id.bad_btn);
 
+        memberImage = (ImageView)v.findViewById(R.id.memberImage);
+        infoImage = (ImageView)v.findViewById(R.id.infoImage);
+
         reviewId = (TextView)v.findViewById(R.id.reviewId);
+
+        moreReview = (LinearLayout)v.findViewById(R.id.moreReview);
+
+        moreReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SimpleReviewDetailActivity.class);
+                //상세리뷰보기에서 보내줘야 할것들.
+                intent.putExtra("simple_review_id", reviewId.getText());
+                v.getContext().getApplicationContext().startActivity(intent);
+            }
+        });
 
         // like
         like_btn.setOnClickListener(new View.OnClickListener() {
