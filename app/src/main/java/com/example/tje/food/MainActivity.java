@@ -20,10 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.example.tje.food.Fragment.CategoryFragment;
-import com.example.tje.food.Fragment.MypageFragment;
-import com.example.tje.food.Fragment.ReviewFragment;
-import com.example.tje.food.Fragment.SearchStoreFragment;
+
 import com.example.tje.food.Model.Member;
 
 import android.widget.Toast;
