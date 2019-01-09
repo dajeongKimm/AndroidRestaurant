@@ -15,7 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-
+import com.example.tje.food.MenuType.Bunsik;
+import com.example.tje.food.MenuType.Coffee;
+import com.example.tje.food.MenuType.Hansik;
+import com.example.tje.food.MenuType.Ilsik;
+import com.example.tje.food.MenuType.Jungsik;
+import com.example.tje.food.MenuType.Pizza;
+import com.example.tje.food.MenuType.Yangsik;
 import com.example.tje.food.Model.Member;
 
 import android.widget.Toast;
@@ -27,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     TextView showText;
 
     LinearLayout goReview, goMypage;
+    LinearLayout goHansik, goJungsik, goIlsik, goPizza, goYangsik, goBunsik, goCoffee;
     TextView defaultReviewTv, ckReviewTv, dafaultMyTv, ckMyTv;
 
     EditText keywordTv;
@@ -103,7 +110,13 @@ public class MainActivity extends AppCompatActivity {
         goKeyword = (ImageButton)findViewById(R.id.goKeyword);
         btn_mypage_form = (ImageButton)findViewById(R.id.btn_mypage_form);
 
-
+        goHansik = (LinearLayout)findViewById(R.id.goHansik);
+        goJungsik = (LinearLayout)findViewById(R.id.goJungsik);
+        goIlsik = (LinearLayout)findViewById(R.id.goIlsik);
+        goPizza = (LinearLayout)findViewById(R.id.goPizza);
+        goYangsik = (LinearLayout)findViewById(R.id.goYangksik);
+        goBunsik = (LinearLayout)findViewById(R.id.goBunsik);
+        goCoffee = (LinearLayout)findViewById(R.id.goCoffee);
 
         loginmember = null;
 
@@ -167,8 +180,6 @@ public class MainActivity extends AppCompatActivity {
         btn_mypage_form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent inetent = getIntent();
                 loginmember =(Member) inetent.getSerializableExtra("loginmember");
 
@@ -176,19 +187,69 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(intent);
 
-
                 }else{
 
                     Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                     intent.putExtra("loginmember",loginmember);
                     startActivity(intent);
 
-
                 }
+            }
+        });
 
+        goHansik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Hansik.class);
+                startActivity(intent);
+            }
+        });
 
+        goJungsik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),  Jungsik.class);
+                startActivity(intent);
+            }
+        });
 
+        goIlsik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),  Ilsik.class);
+                startActivity(intent);
+            }
+        });
 
+        goPizza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),  Pizza.class);
+                startActivity(intent);
+            }
+        });
+
+        goYangsik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),  Yangsik.class);
+                startActivity(intent);
+            }
+        });
+
+        goBunsik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),  Bunsik.class);
+                startActivity(intent);
+            }
+        });
+
+        goCoffee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),  Coffee.class);
+                startActivity(intent);
             }
         });
     }

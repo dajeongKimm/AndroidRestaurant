@@ -7,12 +7,6 @@
     android:layout_margin="20dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="메인으로 돌아가기" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -55,13 +49,19 @@
         android:gravity="center"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/hansik" />
+
         <TextView
-            android:id="@+id/resultTv"
-            android:layout_width="match_parent"
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textAlignment="center" />
+            android:text="한식"
+            android:textAlignment="viewStart" />
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,10 +69,8 @@
         android:background="#e2e2e2"
         android:orientation="vertical">
     </LinearLayout>
-
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/hansikList"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </LinearLayout>
