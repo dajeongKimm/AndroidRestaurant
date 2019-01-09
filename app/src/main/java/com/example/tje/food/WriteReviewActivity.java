@@ -43,7 +43,7 @@ import java.net.URLConnection;
 public class WriteReviewActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "writereview";
-    private static final String URL = "http://192.168.0.3:8080/Final/m";
+    private static final String URL = "http://192.168.0.18:8080/Final/m";
 
     public static final int REQ_GARRERY = 100;
 
