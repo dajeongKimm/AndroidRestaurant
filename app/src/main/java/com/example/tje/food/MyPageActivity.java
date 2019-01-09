@@ -33,7 +33,7 @@ import java.util.Map;
 
 public class MyPageActivity extends AppCompatActivity {
 
-    private static final String SERVER_ADDRESS = "http://192.168.10.8:8080/Final";
+    private static final String SERVER_ADDRESS = Const.MYPAGEACTIVITY_IP;
     private static final String LOG_TAG = "signuptestapp";
 
 

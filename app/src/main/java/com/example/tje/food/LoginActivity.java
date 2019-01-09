@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String LOG_TAG = "signuptestapp";
-    private  static final String SERVER_ADDRESS = "http://192.168.10.8:8080/Final";
+    private  static final String SERVER_ADDRESS = Const.LOGINACTIVITY_IP;
 
     Button btn_login;
     Button btn_signup_form;

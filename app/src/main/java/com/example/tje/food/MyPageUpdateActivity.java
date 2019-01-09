@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 
 public class MyPageUpdateActivity extends AppCompatActivity {
 
-    private  static final String SERVER_ADDRESS = "http://192.168.10.8:8080/Final";
+    private  static final String SERVER_ADDRESS = Const.MYPAGEUPDATEACTIVITY_IP;
     private static final String LOG_TAG = "signuptestapp";
 
 

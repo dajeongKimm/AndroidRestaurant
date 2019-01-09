@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 public class DaumPostCodeActivity extends AppCompatActivity {
 
-    private  static final String SERVER_ADDRESS = "http://192.168.10.8:8080/Final";
+    private  static final String SERVER_ADDRESS = Const.DAUMPOSTCODEACTIVITY_IP;
 
     private WebView daum_webView;
     private TextView add1;
