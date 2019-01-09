@@ -172,14 +172,14 @@ public class MainActivity extends AppCompatActivity {
                 if(loginmember == null){
                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(intent);
-                    finish();
+
 
                 }else{
 
                     Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                     intent.putExtra("loginmember",loginmember);
                     startActivity(intent);
-                    finish();
+                   
 
                 }
 

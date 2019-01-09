@@ -21,9 +21,9 @@ public class Const {
     public static final String WRITEREVIEWACTIVITY_IP = "http://192.168.0.16:8080/Final/m";
 
     //member
-    public static final String LOGINACTIVITY_IP = "http://192.168.10.8:8080/Final";
-    public static final String DAUMPOSTCODEACTIVITY_IP = "http://192.168.10.8:8080/Final";
-    public static final String MYPAGEACTIVITY_IP = "http://192.168.10.8:8080/Final";
-    public static final String MYPAGEUPDATEACTIVITY_IP = "http://192.168.10.8:8080/Final";
-    public static final String SIGNUPACTIVITY_IP = "http://192.168.10.8:8080/Final";
+    public static final String LOGINACTIVITY_IP = "http://192.168.0.16:8080/Final";
+    public static final String DAUMPOSTCODEACTIVITY_IP = "http://192.168.0.16:8080/Final";
+    public static final String MYPAGEACTIVITY_IP = "http://192.168.0.16:8080/Final";
+    public static final String MYPAGEUPDATEACTIVITY_IP = "http://192.168.0.16:8080/Final";
+    public static final String SIGNUPACTIVITY_IP = "http://192.168.0.16:8080/Final";
 }
