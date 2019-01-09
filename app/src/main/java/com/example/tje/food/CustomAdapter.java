@@ -20,7 +20,7 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
 
-    private static final String URL = "http://192.168.0.3:8080/Final/resources/";
+    private static final String URL = "http://192.168.0.18:8080/Final/resources/";
 
     //1. 사용할 데이터 정의
     List<RestaurantListView> data;

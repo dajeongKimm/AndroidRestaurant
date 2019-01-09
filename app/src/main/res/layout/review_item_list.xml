@@ -103,9 +103,7 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="130dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -121,7 +119,7 @@
                 android:padding="10dp"
                 android:text="내용" />
         </LinearLayout>
-    </ScrollView>
+    
 
     <LinearLayout
         android:layout_width="match_parent"

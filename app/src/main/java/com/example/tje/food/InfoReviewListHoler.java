@@ -24,7 +24,7 @@ import java.net.URL;
 public class InfoReviewListHoler extends RecyclerView.ViewHolder {
 
     private static final String LOG_TAG = "inforeviewlistholder";
-    private static final String URL_MAPPING = "http://192.168.0.3:8080/Final/m";
+    private static final String URL_MAPPING = "http://192.168.0.18:8080/Final/m";
 
     //2. 리스트 아이템에 있는 사용할 위젯 정의
     TextView nicknameTv, likeCountTv, badCountTv, writeDateTv, contentsTv, reviewId;
