@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     EditText keywordTv;
     ImageButton goKeyword;
 
-    int a;
 
     public static final int PER_GARRERY = 98;
 
