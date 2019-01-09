@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class ShowMoreReviewListActivity extends AppCompatActivity {
 
-    private static final String URL_MAPPING = "http://192.168.0.18:8080/Final/m";
+    private static final String URL_MAPPING = Const.SHOWMOREREVIEWLISTACTICITY_IP;
     private static final String LOG_TAG = "showmorereview";
 
     List<ReviewListView> data;

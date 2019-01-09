@@ -23,8 +23,8 @@ import java.util.UUID;
 public class SimpleReviewAdapter extends RecyclerView.Adapter<SimpleReviewHolder> {
 
     private static final String LOG_TAG = "simplereviewadapter";
-    private static final String URL = "http://192.168.0.18:8080/Final/resources/upload/simpleReview/";
-    private static final String M_IMAGE_URL = "http://192.168.0.18:8080/Final/resources/upload/memberImage/";
+    private static final String URL = Const.SIMPLEREVIEWADAPTER_IP;
+    private static final String M_IMAGE_URL = Const.SIMPLEREVIEWADAPTER_M_IP;
 
     List<ReviewListView> data;
 

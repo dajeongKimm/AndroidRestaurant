@@ -34,9 +34,9 @@ import java.net.URL;
 public class SimpleReviewDetailActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "simplereviewdetail";
-    private static final String URL_MAPPING = "http://192.168.0.18:8080/Final/m";
-    private static final String M_IMAGE_URL = "http://192.168.0.18:8080/Final/resources/upload/memberImage/";
-    private static final String D_URL = "http://192.168.0.18:8080/Final/resources/upload/simpleReview/";
+    private static final String URL_MAPPING = Const.SIMPLEREVIEWDETAILACTIVITY_IP;
+    private static final String M_IMAGE_URL = Const.SIMPLEREVIEWDETAILACTIVITY_M_IP;
+    private static final String D_URL = Const.SIMPLEREVIEWDETAILACTIVITY_D_IP;
 
     ImageButton member_photo_btn;
     TextView nicknameTv, review_id, like_count, bad_count, review_registdate, contents_text;

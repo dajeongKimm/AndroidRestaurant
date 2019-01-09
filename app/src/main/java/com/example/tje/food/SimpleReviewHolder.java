@@ -25,7 +25,7 @@ import java.net.URL;
 public class SimpleReviewHolder extends RecyclerView.ViewHolder {
 
     private static final String LOG_TAG = "reviewholder";
-    private static final String URL_MAPPING = "http://192.168.0.18:8080/Final/m";
+    private static final String URL_MAPPING = Const.SIMPLEREVIEWHOLER_IP;
 
     // 리스트 아이템에 있는 사용할 위젯 정의
     ImageButton member_photo_btn;
