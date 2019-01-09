@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity {
     EditText keywordTv;
     ImageButton goKeyword;
 
-    int b;
-
     public static final int PER_GARRERY = 98;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
