@@ -3,7 +3,7 @@
     package="com.example.tje.food">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -29,9 +29,16 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".DaumPostCodeActivity" />
         <activity android:name=".MyPageActivity" />
-        <activity android:name=".MyPageUpdateActivity"></activity>
-        <activity android:name=".KeywordActivity"></activity>
-        <activity android:name=".SimpleReviewDetailActivity"></activity>
+        <activity android:name=".MyPageUpdateActivity" />
+        <activity android:name=".KeywordActivity" />
+        <activity android:name=".SimpleReviewDetailActivity" />
+        <activity android:name=".MenuType.Hansik" />
+        <activity android:name=".MenuType.Jungsik" />
+        <activity android:name=".MenuType.Ilsik" />
+        <activity android:name=".MenuType.Pizza" />
+        <activity android:name=".MenuType.Yangsik" />
+        <activity android:name=".MenuType.Bunsik" />
+        <activity android:name=".MenuType.Coffee"></activity>
     </application>
 
 </manifest>
