@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     // 서버에서 받아올 객체
     Member loginmember;
 
+    private BackPressClose backPressClose;
+
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -71,8 +73,15 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(permissions, PER_GARRERY); //(String[] , int)
         }
 
+        backPressClose = new BackPressClose(this);
 
 
+
+    }
+
+    @Override
+    public void onBackPressed(){
+        backPressClose.onBackPressed();
     }
 
     @Override

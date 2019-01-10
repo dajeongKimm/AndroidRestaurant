@@ -92,7 +92,7 @@ public class MyPageActivity extends AppCompatActivity {
                 TextView str_mypage_check_id1 = (TextView) dialogView.findViewById(R.id.str_mypage_check_id1);
                 str_mypage_check_id1.setText(loginmember.getMember_id());
                 AlertDialog.Builder dlg = new AlertDialog.Builder(MyPageActivity.this);
-                dlg.setTitle("회원정보확인");
+
                 dlg.setView(dialogView);
                 dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
