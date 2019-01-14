@@ -49,6 +49,7 @@ public class ShowStoreInfo extends AppCompatActivity {
     Button btnMoreReview, btnBlogReview;
     LinearLayout writeReviewLayout;
     ImageView detailStoreImage;
+    int reviewCount;
 
     DetailRestaurantView storeInfo;
 
@@ -182,7 +183,7 @@ public class ShowStoreInfo extends AppCompatActivity {
 
                         //리뷰개수 가져오기
                         Type typeReviewCount = new TypeToken<Integer>(){}.getType();
-                        int reviewCount = gson.fromJson(jsonObject.get("dataReviewCount"), typeReviewCount);
+                        reviewCount = gson.fromJson(jsonObject.get("dataReviewCount"), typeReviewCount);
 
 
 
@@ -241,10 +242,7 @@ public class ShowStoreInfo extends AppCompatActivity {
 
                         menuListTv.setText(data.toString());
 
-                        //리뷰가 보이지 않으면, 버튼 감추기
-                        if(reviewCount == 0){
-                            btnMoreReview.setVisibility(View.GONE);
-                        }
+
 
 
 
@@ -274,6 +272,11 @@ public class ShowStoreInfo extends AppCompatActivity {
 
                 //이미지 피카소라이브러리로 가져오기
                 Picasso.get().load(Const.CUSTOMAPATER_IP + storeInfo.getRestaurant_mainimage()).into(detailStoreImage);
+
+                //리뷰가 보이지 않으면, 버튼 감추기
+                if(reviewCount == 0){
+                    btnMoreReview.setVisibility(View.GONE);
+                }
 
 
                 /*
