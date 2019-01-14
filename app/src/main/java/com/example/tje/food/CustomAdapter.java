@@ -26,9 +26,11 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
 
     //1. 사용할 데이터 정의
     List<RestaurantListView> data;
+    Intent receiveIntent;
 
-    public CustomAdapter(List<RestaurantListView> data){
+    public CustomAdapter(List<RestaurantListView> data, Intent receiveIntent){
         this.data = data;
+        this.receiveIntent = receiveIntent;
     }
 
     //3. 레이아웃을 객체로 변경
@@ -36,7 +38,7 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
     public StoreListHoler onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_list, viewGroup, false);
 
-        return new StoreListHoler(view);
+        return new StoreListHoler(view, receiveIntent);
     }
 
     //4. 데이터를 화면에 세팅

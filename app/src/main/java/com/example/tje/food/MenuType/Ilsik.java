@@ -105,11 +105,13 @@ public class Ilsik extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
 
+                Intent receiveIntent;
+                receiveIntent = getIntent();
 
                 //1. 리사이클러뷰 화면 연결
                 recyclerView = (RecyclerView) findViewById(R.id.ilsikList);
                 //2. 아답터 생성
-                CustomAdapter adapter = new CustomAdapter(dataList);
+                CustomAdapter adapter = new CustomAdapter(dataList, receiveIntent);
                 //adapter.setData(dataList);
                 //3.리사이클러뷰와 아답터 연결
                 recyclerView.setAdapter(adapter);

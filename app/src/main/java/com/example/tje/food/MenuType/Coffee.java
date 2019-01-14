@@ -15,6 +15,7 @@ import com.example.tje.food.Const;
 import com.example.tje.food.CustomAdapter;
 import com.example.tje.food.KeywordActivity;
 import com.example.tje.food.Model.RestaurantListView;
+
 import com.example.tje.food.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -106,11 +107,14 @@ public class Coffee extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
 
+                Intent receiveIntent;
+                receiveIntent = getIntent();
+
 
                 //1. 리사이클러뷰 화면 연결
                 recyclerView = (RecyclerView) findViewById(R.id.desertList);
                 //2. 아답터 생성
-                CustomAdapter adapter = new CustomAdapter(dataList);
+                CustomAdapter adapter = new CustomAdapter(dataList,receiveIntent);
                 //adapter.setData(dataList);
                 //3.리사이클러뷰와 아답터 연결
                 recyclerView.setAdapter(adapter);

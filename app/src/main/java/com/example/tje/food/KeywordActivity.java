@@ -7,8 +7,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.tje.food.Model.Member;
 import com.example.tje.food.Model.RestaurantListView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,9 +33,17 @@ public class KeywordActivity extends AppCompatActivity {
 
     Intent receiveIntent;
     List<RestaurantListView> keywordlist;
+    RecyclerView recyclerView;
 
     //테스트용
-    TextView resultTv;
+    TextView resultTv, nokeyword;
+
+    //검색용
+    EditText keywordTv;
+    ImageButton goKeyword;
+
+    //로그인 멤버
+    Member loginmember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +53,16 @@ public class KeywordActivity extends AppCompatActivity {
         receiveIntent = getIntent();
         String keyword = receiveIntent.getStringExtra("keyword");
         resultTv = (TextView)findViewById(R.id.resultTv);
+        nokeyword = (TextView)findViewById(R.id.nokeyword);
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+
+        keywordTv = (EditText)findViewById(R.id.keywordTv);
+        goKeyword = (ImageButton)findViewById(R.id.goKeyword);
 
         init();
         resultTv.setText(keyword + "의 검색결과");
+
+        setEvents();
 
     }
 
@@ -80,6 +99,12 @@ public class KeywordActivity extends AppCompatActivity {
                         Type typeKeyword = new TypeToken<ArrayList<RestaurantListView>>(){}.getType();
                         keywordlist = gson.fromJson(buffer.toString(), typeKeyword);
 
+                        if (keywordlist == null){
+                            nokeyword.setText("검색결과가 없습니다.");
+                            nokeyword.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        }
+
                     }else{//그외에 400번 500번 에러가 있는 경우
                         Log.d(LOG_TAG, "서버 연결 및 메세지 읽기 실패1\n");
                         Log.d(LOG_TAG,myConnection.getResponseCode() + "");
@@ -95,9 +120,9 @@ public class KeywordActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
                 //1. 리사이클러뷰 화면 연결
-                RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+                //RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
                 //2. 아답터 생성
-                CustomAdapter adapter = new CustomAdapter(keywordlist);
+                CustomAdapter adapter = new CustomAdapter(keywordlist, receiveIntent);
                 //3.리사이클러뷰와 아답터 연결
                 recyclerView.setAdapter(adapter);
                 //4.리사이클러뷰매니저
@@ -108,5 +133,25 @@ public class KeywordActivity extends AppCompatActivity {
                 super.onPostExecute(s);
             }
         }.execute();
+    }
+
+    public void setEvents(){
+        goKeyword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),KeywordActivity.class);
+
+                loginmember =(Member) receiveIntent.getSerializableExtra("loginmember");
+
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
+                //키워드 가지고 화면전환
+                String keyword = keywordTv.getText().toString();
+                intent.putExtra("keyword", keyword);
+                startActivity(intent);
+                keywordTv.setText("");
+            }
+        });
     }
 }

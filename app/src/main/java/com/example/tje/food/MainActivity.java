@@ -68,14 +68,18 @@ public class MainActivity extends AppCompatActivity {
         }
         */
 
+        //*************마시멜로우 버전 이상에서만 검사하기**************
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-        if(checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED &&
-                checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
-            init();
-            setEvents();
-        }else{ //2.2 권한이 없으면 - 사용자에게 권한요청
-            String permissions[] = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-            requestPermissions(permissions, PER_GARRERY); //(String[] , int)
+            if (checkSelfPermission(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED &&
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                init();
+                setEvents();
+            } else { //2.2 권한이 없으면 - 사용자에게 권한요청
+                String permissions[] = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permissions, PER_GARRERY); //(String[] , int)
+            }
+
         }
 
 
@@ -142,10 +146,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),KeywordActivity.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 //키워드 가지고 화면전환
                 String keyword = keywordTv.getText().toString();
                 intent.putExtra("keyword", keyword);
                 startActivity(intent);
+                keywordTv.setText("");
             }
         });
 
@@ -201,6 +209,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Hansik.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -209,6 +220,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Jungsik.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -217,6 +231,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Ilsik.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -225,6 +242,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Pizza.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -233,6 +253,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Yangsik.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -241,6 +264,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Bunsik.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });
@@ -249,6 +275,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),  Coffee.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 startActivity(intent);
             }
         });

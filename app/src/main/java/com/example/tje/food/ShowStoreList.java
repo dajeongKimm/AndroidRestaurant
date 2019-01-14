@@ -1,12 +1,17 @@
 package com.example.tje.food;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
+import com.example.tje.food.Model.Member;
 import com.example.tje.food.Model.RestaurantListView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,14 +33,25 @@ public class ShowStoreList extends AppCompatActivity {
     //사용할 데이터 담기
     List<RestaurantListView> dataList;
     RecyclerView recyclerView;
+    Intent receiveIntent;
 
+    //검색용
+    EditText keywordTv;
+    ImageButton goKeyword;
+
+    //로그인 멤버
+    Member loginmember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_store_list);
 
+        keywordTv = (EditText)findViewById(R.id.keywordTv);
+        goKeyword = (ImageButton)findViewById(R.id.goKeyword);
+
         init();
+        setEvents();
     }
 
     public void init(){
@@ -101,11 +117,13 @@ public class ShowStoreList extends AppCompatActivity {
             @Override
             protected void onPostExecute(String s) {
 
+                //로그인 객체 넘겨줄 화면
+                receiveIntent = getIntent();
 
                 //1. 리사이클러뷰 화면 연결
                 recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
                 //2. 아답터 생성
-                CustomAdapter adapter = new CustomAdapter(dataList);
+                CustomAdapter adapter = new CustomAdapter(dataList, receiveIntent);
                 //adapter.setData(dataList);
                 //3.리사이클러뷰와 아답터 연결
                 recyclerView.setAdapter(adapter);
@@ -118,5 +136,22 @@ public class ShowStoreList extends AppCompatActivity {
                 super.onPostExecute(s);
             }
         }.execute();
+    }
+
+    public void setEvents(){
+        goKeyword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),KeywordActivity.class);
+                if (loginmember != null){
+                    intent.putExtra("loginmember",loginmember);
+                }
+                //키워드 가지고 화면전환
+                String keyword = keywordTv.getText().toString();
+                intent.putExtra("keyword", keyword);
+                startActivity(intent);
+                keywordTv.setText("");
+            }
+        });
     }
 }

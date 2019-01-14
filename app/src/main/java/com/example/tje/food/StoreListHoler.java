@@ -22,7 +22,7 @@ public class StoreListHoler extends RecyclerView.ViewHolder {
     Intent receiveIntent;
 
     //1. 생성자
-    public StoreListHoler(View v){
+    public StoreListHoler(View v, Intent receiveIntent){
         super(v);
 
         //3. findViewById로 연결
@@ -35,6 +35,8 @@ public class StoreListHoler extends RecyclerView.ViewHolder {
 
         clickLayout = (LinearLayout)v.findViewById(R.id.clickLayout);
 
+        //로그인된 객체 받기
+        loginmember = (Member) receiveIntent.getSerializableExtra("loginmember");
 
         setEvents();
     }
@@ -44,13 +46,12 @@ public class StoreListHoler extends RecyclerView.ViewHolder {
         clickLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                loginmember = (Member) receiveIntent.getSerializableExtra("loginmember");
 
                 Intent intent = new Intent(v.getContext(),ShowStoreInfo.class);
                 intent.putExtra("restaurant_id", rIdxTv.getText().toString());
                 intent.putExtra("restaurant_name", storeNameTv.getText().toString());
                 //로그인된 멤버 받아서 넘겨주기
-                //intent.putExtra("loginmember", loginmember);
+                intent.putExtra("loginmember", loginmember);
                 v.getContext().startActivity(intent); //holder안에 있어서 v.getContext().startActivity사용
 
             }

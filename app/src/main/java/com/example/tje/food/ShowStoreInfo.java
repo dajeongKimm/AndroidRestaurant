@@ -13,8 +13,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tje.food.Model.DetailRestaurantView;
+import com.example.tje.food.Model.Member;
 import com.example.tje.food.Model.MenuList;
 import com.example.tje.food.Model.RestaurantListView;
 import com.example.tje.food.Model.ReviewListView;
@@ -40,7 +42,6 @@ public class ShowStoreInfo extends AppCompatActivity {
     private static final String LOG_TAG = "comexamplefoodtag";
     private static final String SHOW_INFO_STORE_URL = Const.SHOWSTOREINFO_IP;
 
-
     TextView storeTitle, totalTv, addressTv, telTv, menutypeTv, bTimeTv, openDateTv, introTv, menuListTv, discountTv, serviceTv, alertMsg;
     Intent receiveIntent;
     RecyclerView reviewRecy;
@@ -51,6 +52,8 @@ public class ShowStoreInfo extends AppCompatActivity {
 
     DetailRestaurantView storeInfo;
 
+    Member loginmember;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,14 @@ public class ShowStoreInfo extends AppCompatActivity {
 
         receiveIntent = getIntent();
 
+        //테스트 == 로그인 객체 넘겨받기
+        //로그인 잘 넘겨받았나 검사
+        loginmember = (Member) receiveIntent.getSerializableExtra("loginmember");
+        if (loginmember == null) {
+            Toast.makeText(getApplicationContext(), "로그인된 객체 : " + loginmember, Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(), "로그인된 객체 : " + loginmember.getMember_id(), Toast.LENGTH_SHORT).show();
+        }
         init();
         setEvents();
     }
@@ -173,10 +184,7 @@ public class ShowStoreInfo extends AppCompatActivity {
                         Type typeReviewCount = new TypeToken<Integer>(){}.getType();
                         int reviewCount = gson.fromJson(jsonObject.get("dataReviewCount"), typeReviewCount);
 
-                        //리뷰가 보이지 않으면, 버튼 감추기
-                        if(reviewCount == 0){
-                            btnMoreReview.setVisibility(View.GONE);
-                        }
+
 
                         //data 세팅
                         storeTitle.setText(storeInfo.getRestaurant_name());
@@ -232,6 +240,11 @@ public class ShowStoreInfo extends AppCompatActivity {
                         }
 
                         menuListTv.setText(data.toString());
+
+                        //리뷰가 보이지 않으면, 버튼 감추기
+                        if(reviewCount == 0){
+                            btnMoreReview.setVisibility(View.GONE);
+                        }
 
 
 

@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import com.example.tje.food.Const;
 import com.example.tje.food.CustomAdapter;
 import com.example.tje.food.KeywordActivity;
+import com.example.tje.food.Model.Member;
 import com.example.tje.food.Model.RestaurantListView;
 import com.example.tje.food.R;
 import com.google.gson.Gson;
@@ -38,6 +39,9 @@ public class Bunsik extends AppCompatActivity {
     RecyclerView recyclerView;
     ImageButton goKeyword;
     EditText keywordTv;
+    Intent receiveIntent;
+
+    Member loginmember;
 
 
     @Override
@@ -47,11 +51,18 @@ public class Bunsik extends AppCompatActivity {
         goKeyword = (ImageButton)findViewById(R.id.goKeyword);
         keywordTv = (EditText) findViewById(R.id.keywordTv);
 
+        receiveIntent = getIntent();
+
+        loginmember =(Member) receiveIntent.getSerializableExtra("loginmember");
+
         //검색하기
         goKeyword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),KeywordActivity.class);
+                if (loginmember !=  null){
+                    intent.putExtra("loginmember",loginmember);
+                }
                 //키워드 가지고 화면전환
                 String keyword = keywordTv.getText().toString();
                 intent.putExtra("keyword", keyword);
@@ -107,10 +118,11 @@ public class Bunsik extends AppCompatActivity {
             protected void onPostExecute(String s) {
 
 
+
                 //1. 리사이클러뷰 화면 연결
                 recyclerView = (RecyclerView) findViewById(R.id.bunsikList);
                 //2. 아답터 생성
-                CustomAdapter adapter = new CustomAdapter(dataList);
+                CustomAdapter adapter = new CustomAdapter(dataList, receiveIntent);
                 //adapter.setData(dataList);
                 //3.리사이클러뷰와 아답터 연결
                 recyclerView.setAdapter(adapter);
