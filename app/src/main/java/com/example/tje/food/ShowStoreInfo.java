@@ -278,6 +278,16 @@ public class ShowStoreInfo extends AppCompatActivity {
                     btnMoreReview.setVisibility(View.GONE);
                 }
 
+                if(loginmember == null){
+                    writeReviewLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+
 
                 /*
                 if(reviewlist == null){

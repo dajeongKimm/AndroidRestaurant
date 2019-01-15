@@ -14,6 +14,7 @@ import android.webkit.CookieManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class MyPageActivity extends AppCompatActivity {
     View dialogView;
     Member loginmember;
 
+    LinearLayout goLog;
+
 
 
     Button btn_logout;
@@ -62,7 +65,7 @@ public class MyPageActivity extends AppCompatActivity {
         btn_member_update = findViewById(R.id.btn_member_update);
         btn_profile = findViewById(R.id.btn_profile);
 
-
+        goLog = (LinearLayout)findViewById(R.id.goLog);
 
     }
 
@@ -221,6 +224,16 @@ public class MyPageActivity extends AppCompatActivity {
 
 
 
+            }
+        });
+
+        //방문기록
+        goLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), VisitLog.class);
+                intent.putExtra("loginmember", loginmember);
+                startActivity(intent);
             }
         });
 

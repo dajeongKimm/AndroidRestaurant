@@ -37,6 +37,9 @@ public class Const {
     public static final String YANGSIK = "http://192.168.0.241:8080/Final/m/show/restaurant/Yangsik";
     public static final String BUNSIK = "http://192.168.0.241:8080/Final/m/show/restaurant/Bunsik";
     public static final String CAFE = "http://192.168.0.241:8080/Final/m/show/restaurant/Coffee";
+
+    //visit
+    public static final String VISITLOG = "http://192.168.0.241:8080/Final/m/show/visit";
 }
 
 

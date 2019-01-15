@@ -46,8 +46,6 @@ public class CustomAdapter extends RecyclerView.Adapter<StoreListHoler> {
     public void onBindViewHolder(final StoreListHoler storeListHoler, int i) {
         final RestaurantListView list = data.get(i);
 
-
-
         storeListHoler.rIdxTv.setText(list.getRestaurant_id()+"");
         //이미지 우선 생략
         storeListHoler.storeNameTv.setText(list.getRestaurant_name());
