@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.tje.food.Model.Member;
 import com.example.tje.food.Model.ReviewListView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,6 +33,7 @@ public class ShowMoreReviewListActivity extends AppCompatActivity {
 
     List<ReviewListView> data;
     TextView review_count;
+    Intent receiveIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +106,10 @@ public class ShowMoreReviewListActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String s) {
+                receiveIntent = getIntent();
                 RecyclerView recyclerView = findViewById(R.id.recyclerView);
                 SimpleReviewAdapter adapter = new SimpleReviewAdapter();
-                adapter.setData(data);
+                adapter.setData(data, receiveIntent);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 super.onPostExecute(s);

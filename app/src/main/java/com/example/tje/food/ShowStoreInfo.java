@@ -67,6 +67,7 @@ public class ShowStoreInfo extends AppCompatActivity {
         //테스트 == 로그인 객체 넘겨받기
         //로그인 잘 넘겨받았나 검사
         loginmember = (Member) receiveIntent.getSerializableExtra("loginmember");
+        //////////////////////////////////////////////////////////////////////////////////////
         if (loginmember == null) {
             Toast.makeText(getApplicationContext(), "로그인된 객체 : " + loginmember, Toast.LENGTH_SHORT).show();
         }else{
@@ -108,6 +109,8 @@ public class ShowStoreInfo extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ShowMoreReviewListActivity.class);
                 intent.putExtra("restaurant_id", restaurant_id);
                 intent.putExtra("restaurant_name",restaurant_name);
+                if (loginmember != null)
+                    intent.putExtra("loginmember", loginmember);
                 startActivity(intent);
             }
         });

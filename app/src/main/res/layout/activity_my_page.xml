@@ -31,7 +31,9 @@
         <ImageButton
             android:id="@+id/btn_profile"
             android:layout_width="102dp"
-            android:layout_height="56dp" />
+            android:layout_height="56dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/str_mypage_nickname"

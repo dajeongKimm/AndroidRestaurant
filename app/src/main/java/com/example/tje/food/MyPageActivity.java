@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.tje.food.Model.Member;
 import com.example.tje.food.Model.Member_address;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -83,6 +84,7 @@ public class MyPageActivity extends AppCompatActivity {
         str_mypage_email.setText(loginmember.getMember_email());
         str_mypage_add.setText(fulladd);
 
+        Picasso.get().load(Const.SIMPLEREVIEWADAPTER_M_IP + "default.png").into(btn_profile);
 
 
         btn_member_update.setOnClickListener(new View.OnClickListener() {

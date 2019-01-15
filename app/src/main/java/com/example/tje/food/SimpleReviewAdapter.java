@@ -1,5 +1,6 @@
 package com.example.tje.food;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -27,21 +28,24 @@ public class SimpleReviewAdapter extends RecyclerView.Adapter<SimpleReviewHolder
     private static final String M_IMAGE_URL = Const.SIMPLEREVIEWADAPTER_M_IP;
 
     List<ReviewListView> data;
+    Intent receiveIntent;
 
-    public void setData(List<ReviewListView> data) {
+    public void setData(List<ReviewListView> data, Intent receiveIntent) {
         this.data = data;
+        this.receiveIntent = receiveIntent;
     }
 
     @Override
     public SimpleReviewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.simple_review_item, viewGroup, false);
-        return new SimpleReviewHolder(view);
+        return new SimpleReviewHolder(view, receiveIntent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final SimpleReviewHolder simpleReviewHolder, int i) {
         final ReviewListView contact = data.get(i);
 
+        simpleReviewHolder.restaurant_id.setText(contact.getRestaurant_id()+"");
         simpleReviewHolder.nicknameTv.setText(contact.getMember_nickname());
         simpleReviewHolder.like_count.setText(Integer.toString(contact.getSimple_review_like_count()));
         simpleReviewHolder.bad_count.setText(Integer.toString(contact.getSimple_review_notify_count()));

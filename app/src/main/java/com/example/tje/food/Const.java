@@ -19,6 +19,7 @@ public class Const {
     public static final String SIMPLEREVIEWHOLER_IP = "http://192.168.0.241:8080/Final/m";
 
     public static final String WRITEREVIEWACTIVITY_IP = "http://192.168.0.241:8080/Final/m";
+    public static final String SIMPLEREVIEW_DELETE = "http://192.168.0.241:8080/Final/m/allRestaurantList/delete/";
 
 
 
@@ -40,6 +41,8 @@ public class Const {
 
     //visit
     public static final String VISITLOG = "http://192.168.0.241:8080/Final/m/show/visit";
+
+
 }
 
 
