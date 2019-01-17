@@ -67,12 +67,13 @@ public class ShowStoreInfo extends AppCompatActivity {
         //테스트 == 로그인 객체 넘겨받기
         //로그인 잘 넘겨받았나 검사
         loginmember = (Member) receiveIntent.getSerializableExtra("loginmember");
-        //////////////////////////////////////////////////////////////////////////////////////
+        /*
         if (loginmember == null) {
             Toast.makeText(getApplicationContext(), "로그인된 객체 : " + loginmember, Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(getApplicationContext(), "로그인된 객체 : " + loginmember.getMember_id(), Toast.LENGTH_SHORT).show();
         }
+        */
         init();
         setEvents();
     }

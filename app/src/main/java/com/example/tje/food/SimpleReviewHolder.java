@@ -418,8 +418,6 @@ public class SimpleReviewHolder extends RecyclerView.ViewHolder {
                     if (myConnection.getResponseCode() == 200) { // 200번은 성공인 경우
                         BufferedReader in = new BufferedReader(new InputStreamReader(myConnection.getInputStream()));
 
-
-
                     } else {//그외에 400번 500번 에러가 있는 경우
                         Log.d(LOG_TAG, "서버 연결 및 메세지 읽기 실패1\n");
                         Log.d(LOG_TAG, myConnection.getResponseCode() + "");
